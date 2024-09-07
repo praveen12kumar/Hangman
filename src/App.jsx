@@ -1,12 +1,16 @@
 
 import './App.css'
-
+import TextInputForm from './components/TextInputForm/TextInputForm'
+TextInputForm
 function App() {
  
 
   return (
     <>
-    <h1>Hello</h1>
+   
+
+    <TextInputForm/>
+
     </>
   )
 }
