@@ -1,21 +1,39 @@
-import TextInputForm from "./TextInputForm"
+import { useState } from "react";
+import TextInputForm from "./TextInputForm";
 
-function TextInputFormContainer(){
-    function handleFormSubmit(event){
-        event.preventDefault()
-        console.log("Form submitted")
+function TextInputFormContainer() {
+
+    const [inputType, setInputType] = useState("password");
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        console.log("Form submitted");
     }
 
-    function handleTextInputChange(event){
-        console("Text input change")
-        console.log(event.target.value)
+    function handleTextInputChange(event) {
+        console.log("Text input changed");
+        console.log(event.target.value);
     }
+
+    function handleShowHideClick() {
+        console.log("Show/Hide button clicked");
+        if (inputType === "password") {
+            setInputType("text")
+        } else {
+            setInputType("password");
+        }
+        console.log(inputType);
+        
+    }
+
     return (
-    <TextInputForm
-        handleFormSubmit={handleFormSubmit}
-        handleTextInputChange={handleTextInputChange}
-    />
-  )
+        <TextInputForm 
+            inputType={inputType}
+            handleFormSubmit={handleFormSubmit} 
+            handleTextInputChange={handleTextInputChange} 
+            handleShowHideClick={handleShowHideClick}
+        />
+    );
 }
 
-export default TextInputFormContainer
+export default TextInputFormContainer;

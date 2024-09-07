@@ -1,17 +1,16 @@
 
+import { useState } from 'react'
 import './App.css'
-import TextInputForm from './components/TextInputForm/TextInputForm'
-TextInputForm
-function App() {
- 
 
+
+import TextInputFormContainer from './components/TextInputForm/TextInputFormContainer'
+function App() {
   return (
-    <>
+    <div>
    
 
-    <TextInputForm/>
-
-    </>
+    <TextInputFormContainer/>
+    </div>
   )
 }
 

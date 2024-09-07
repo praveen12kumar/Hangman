@@ -1,19 +1,17 @@
-import './button.css'
-import getButtonStyling from './getStypeType';
+import getButtonStyling from "./getButtonStyling";
 
+function Button({ text, onClickHandler, styleType = "primary", type="button" }) {
 
-
-const Button = ({text, type, onClickHandler, styleType="primary"}) => {
-    console.log(styleType);
-    
-  return (
-    <button className= {`${getButtonStyling(styleType)} text-white bg-blue-600 font-sans px-4 py-2 rounded`}
-        onClick={onClickHandler}
-        type={type}    
-        >{text}</button>
-  )
+    return (
+        <button
+            onClick={onClickHandler}
+            type={type}
+            className={`px-4 py-2 ${getButtonStyling(styleType)}  text-white`}
+        >
+            {text}
+        </button>
+    );
 }
 
 
-
-export default Button
+export default Button;
