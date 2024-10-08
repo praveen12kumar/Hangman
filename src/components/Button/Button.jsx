@@ -6,7 +6,7 @@ function Button({ text, onClickHandler, styleType = "primary", type="button" }) 
         <button
             onClick={onClickHandler}
             type={type}
-            className={`px-4 py-2 ${getButtonStyling(styleType)}  text-white`}
+            className={`px-8 py-2 ${getButtonStyling(styleType)}  text-white  font-poppins border border-zinc-300 rounded-lg`}
         >
             {text}
         </button>

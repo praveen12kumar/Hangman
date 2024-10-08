@@ -1,20 +1,16 @@
 import Button from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 
-function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, handleShowHideClick }) {
+function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, handleShowHideClick, handleHintInputChange }) {
    
     return (
-        <form onSubmit={handleFormSubmit}>
-            <div>
+        <form className="w-full px-20 flex flex-col gap-8" onSubmit={handleFormSubmit}>
+            <div className="w-full flex items-center justify-between">
                 <TextInput 
                     type={inputType}
-                    label="Enter a word or a phrase"
                     placeholder="Enter a word or phrase here ..."
                     onChangeHandler={handleTextInputChange}
                 />
-            </div>
-
-            <div>
                 <Button
                     styleType="warning"
                     text={inputType === "password" ? "Show" : "Hide"}
@@ -22,12 +18,17 @@ function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, han
                 />
             </div>
 
-            <div>
+            <div className="w-full flex items-center justify-between">
+                <TextInput 
+                    type={inputType}
+                    placeholder="Enter word description."
+                    onChangeHandler={handleHintInputChange}
+                />
                 <Button
                     type="submit"
                     styleType="primary"
                     text="Submit"
-                />
+                />    
             </div>
         </form>
     );

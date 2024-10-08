@@ -3,7 +3,7 @@ function getButtonStyling(styleType){
         return "bg-blue-600"
     }
     else if(styleType === 'secondary'){
-        return "bg-gray-600"
+        return "bg-orange-600"
     }
     else if(styleType === 'success'){
         return "bg-green-600"

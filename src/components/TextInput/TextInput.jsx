@@ -1,17 +1,13 @@
-function TextInput({ type = "text", label, placeholder = "Enter your input here", onChangeHandler }) {
+function TextInput({ type = "text",  placeholder = "Enter your input here", onChangeHandler }) {
 
     return (
-        <label>
-            <span className="text-gray-700">{label}</span>
             <input 
                 type={type}
-                className="px-4 py-2 border border-gray-500 rounded-md w-full"
+                className="w-full px-4 py-2 font-poppins font-medium outline-none rounded-md "
                 placeholder={placeholder}
                 onChange={onChangeHandler}
             />
-            
-        </label>
-        
+
     )
 }
 

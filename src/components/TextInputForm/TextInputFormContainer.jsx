@@ -1,29 +1,38 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextInputForm from "./TextInputForm";
 
 function TextInputFormContainer() {
 
+    const navigate = useNavigate();
+
     const [inputType, setInputType] = useState("password");
+    const [value, setValue] = useState("");
+    const [hint, setHint] = useState("");
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        console.log("Form submitted");
+        if(value){
+            navigate(`/play`, {state:{wordSelected: value, wordHint: hint}});
+        }
     }
 
     function handleTextInputChange(event) {
-        console.log("Text input changed");
-        console.log(event.target.value);
+        let text = event.target.value;
+        text = text.toUpperCase();
+        setValue(text);
+    }
+
+    function handleHintInputChange(event) {
+        setHint(event.target.value);
     }
 
     function handleShowHideClick() {
-        console.log("Show/Hide button clicked");
         if (inputType === "password") {
             setInputType("text")
         } else {
             setInputType("password");
-        }
-        console.log(inputType);
-        
+        } 
     }
 
     return (
@@ -32,6 +41,7 @@ function TextInputFormContainer() {
             handleFormSubmit={handleFormSubmit} 
             handleTextInputChange={handleTextInputChange} 
             handleShowHideClick={handleShowHideClick}
+            handleHintInputChange={handleHintInputChange}
         />
     );
 }
