@@ -1,21 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import Button from '../components/Button/Button'
 import Heading from '../components/Heading/Heading'
 import { Link } from 'react-router-dom';
-
+import WordContext from '../store/WordContext';
 const Home = () => {
-  const [word, setWord] = useState("");
-  const [hint, setHint] = useState("");
+  
+  const {setLoading, setWordList} = useContext(WordContext);
+  
   async function fetchWords() {
       const response = await fetch("https://hangman-server-x0ni.onrender.com/");
-      const data = await response.json();
+      setLoading(true);
+      const data = await response.json(); 
       console.log("data", data);
       
-      const randomIndex = Math.floor(Math.random() * data?.words?.length);
-     
-      console.log("data",data?.words[randomIndex]);
-      setWord(data?.words?.[randomIndex]?.wordValue);
-      setHint(data?.words?.[randomIndex]?.wordHint);
+      setWordList(data?.words);
+      setLoading(false);
   } 
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const Home = () => {
             <Heading textStyle={'text-5xl py-10'} text={"Hangman"}/>
             <Heading textStyle={'text-3xl '} text={"Select Player"}/>
             <div className="w-full flex justify-evenly p-10 font-poppins">
-            <Link to="/play" state={{wordSelected: word, wordHint: hint}}>
+            <Link to="/play">
               <Button styleType="primary" text="Single Player"/>
             </Link>
             <Link to="/start">
@@ -38,7 +37,7 @@ const Home = () => {
             </div>
         </div>
     </div>
-  )
+  ) 
 }
 
 export default Home

@@ -1,30 +1,38 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextInputForm from "./TextInputForm";
+import WordContext from "../../store/WordContext";
 
 function TextInputFormContainer() {
 
     const navigate = useNavigate();
 
     const [inputType, setInputType] = useState("password");
-    const [value, setValue] = useState("");
-    const [hint, setHint] = useState("");
+
+    const {word, setWord,hint, setHint} = useContext(WordContext);
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        if(value){
-            navigate(`/play`, {state:{wordSelected: value, wordHint: hint}});
+        if(word){
+            navigate(`/play`);
         }
     }
 
     function handleTextInputChange(event) {
         let text = event.target.value;
+        if(text === ""){
+            alert("Input is Empty")
+        }
         text = text.toUpperCase();
-        setValue(text);
+        setWord(text);
     }
 
     function handleHintInputChange(event) {
-        setHint(event.target.value);
+        let text = event.target.value;
+        if(text === ""){
+            alert("Input is Empty")
+        }
+        setHint(text);
     }
 
     function handleShowHideClick() {
