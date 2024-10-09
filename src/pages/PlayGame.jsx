@@ -125,11 +125,11 @@ function PlayGame() {
       }
 
       {
-        showModal && gameOver && <Modal text={"You have lost the game, The correct word is"} gameOver={gameOver}/>
+        showModal && gameOver && <Modal text={"You have lost the game, The correct word is"} text2={"Game Over"} gameOver={gameOver}/>
       }
       
       {
-        showModal && gameWin && <Modal text={"Congratulation you have won the game"} /> 
+        showModal && gameWin && <Modal text={"Congratulation you have won the game"} text2={"Game Win"} /> 
       }
     </>
   );
